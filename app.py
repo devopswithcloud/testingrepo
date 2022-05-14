@@ -1,14 +1,11 @@
-import os
 from flask import Flask
-server = Flask(__name__)
+from waitress import serve
 
-@server.route("/")
-def welcome():
-    return "Welcome to Openshift training"
+app = Flask(__name__)
 
-@server.route('/openshift')
+@app.route('/')
 def hello():
-    return 'Openshift is easy to learn'
+    return "Welcome to Openshift Training"
 
-if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=8080)
+if __name__ == '__main__':
+    serve(app, host='0.0.0.0', port=8080)
